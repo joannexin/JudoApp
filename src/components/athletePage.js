@@ -8,14 +8,13 @@ import athletes from '../data/athletes';
 
 export default class AthletePage extends React.Component {
   render() {
+    const id = this.props.params.id;
+    const athlete = athletes.filter((athlete) => athlete.id === id)[0];
+    if (!athlete) {
+      return <NotFoundPage/>;
+    }
+    const headerStyle = { backgroundImage: `url(/img/${athlete.cover})` };
     return (
-      const id = this.props.params.id;
-      const athlete = athletes.filter((athlete) => athlete.id === id)[0];
-      if (!athlete) {
-        return <NotFoundPage />;
-      }
-      const headerStyle = { backgroundImage: `url(/img/${athlete.cover})` };
-      return (
       <div className="athlete-full">
         <AthletesMenu/>
         <div className="athlete">
